@@ -1,14 +1,19 @@
 package com.movierank.domain;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+
 @Getter
 @Setter
 @ToString
+@Document(collection="movie")
 public class MovieDTO {
-	
+	@Id
 	private int rank;			 // 순위
 	private String movie; 		 // 영화제목
 	private String imgsrc; 		 // 포스터이미지
@@ -20,14 +25,13 @@ public class MovieDTO {
 	private String actor; 		 // 출연자
 	private String navercode; 	 // 네이버 영화코드
 	private double navercore; 	 // 네이버 평점
-	private String daumecode; 	 // 다음 영화코드
-	private double daumescore; 	 // 다음평점
+	private String daumcode; 	 // 다음 영화코드
+	private double daumscore; 	 // 다음평점
 	private double score; 		 // 네이버 + 다음 평점의 평균
 	
-	
 	public MovieDTO(int rank, String movie, String imgsrc, String type, String opendate, String bookingrate,
-			String runtime, String director, String actor, String navercode, double navercore, String daumecode,
-			double daumescore) {
+			String runtime, String director, String actor, String navercode, double navercore, String daumcode,
+			double daumscore, double score) {
 		super();
 		this.rank = rank;
 		this.movie = movie;
@@ -40,9 +44,12 @@ public class MovieDTO {
 		this.actor = actor;
 		this.navercode = navercode;
 		this.navercore = navercore;
-		this.daumecode = daumecode;
-		this.daumescore = daumescore;
+		this.daumcode = daumcode;
+		this.daumscore = daumscore;
+		this.score = score;
 	}
+	
+	
 
 }
 
